@@ -6,7 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Screen Readers</title>
     <link rel="stylesheet" href="../css/style.css" />
-    <style></style>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        .main {
+          background-color: gray;
+        }
+      }
+
+      @media (prefers-color-scheme: light) {
+        .main {
+          background-color: white;
+        }
+      }
+      .overrideDark {
+        background-color: gray;
+        color: white;
+      }
+
+      .overrideLight {
+        background-color: white;
+        columns: grey;
+      }
+      
+    </style>
   </head>
   <body class="main">
     <header>
@@ -26,5 +48,21 @@
         <input id="input" type="checkbox" />
       </label>
     </div>
+    <script>
+      const checkbox = document.querySelector("#input");
+      const main = document.querySelector(".main");
+      checkbox.addEventListener('click', (event) => {
+        if (event.target.checked) {
+          console.log("grey")
+          main.classList.remove("overrideLight");
+          main.classList.add("overrideDark");
+        }
+        else {
+          console.log("white");
+          main.classList.remove("overrideDark");
+          main.classList.add("overrideLight");
+        }
+      })
+    </script>
   </body>
 </html>
